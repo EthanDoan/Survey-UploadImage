@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD764F62CCCDBD626C8C3C6D /* Pods_Survey_UploadImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E1DA90EDD7A4574105FDFD /* Pods_Survey_UploadImage.framework */; };
 		D723CECF221C003D0095A5CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D723CECE221C003D0095A5CE /* AppDelegate.swift */; };
 		D723CED4221C003D0095A5CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D723CED2221C003D0095A5CE /* Main.storyboard */; };
 		D723CED6221C00410095A5CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D723CED5221C00410095A5CE /* Assets.xcassets */; };
@@ -19,9 +20,14 @@
 		D7275012221D0CE900174F8D /* IUCollectionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */; };
 		D7275016221D34D500174F8D /* IUImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7275015221D34D500174F8D /* IUImageObject.swift */; };
 		D7275018221D48A800174F8D /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7275017221D48A800174F8D /* CommonFunctions.swift */; };
+		D727501A221D541800174F8D /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7275019221D541800174F8D /* SectionHeaderView.swift */; };
+		D727501C221D55E500174F8D /* IUCategoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727501B221D55E500174F8D /* IUCategoryCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66E1DA90EDD7A4574105FDFD /* Pods_Survey_UploadImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Survey_UploadImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68ED749BA2B33257001BC30C /* Pods-Survey-UploadImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey-UploadImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-Survey-UploadImage/Pods-Survey-UploadImage.release.xcconfig"; sourceTree = "<group>"; };
+		9ABD081FDF987670D9B6D288 /* Pods-Survey-UploadImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Survey-UploadImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Survey-UploadImage/Pods-Survey-UploadImage.debug.xcconfig"; sourceTree = "<group>"; };
 		D723CECB221C003D0095A5CE /* Survey-UploadImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Survey-UploadImage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D723CECE221C003D0095A5CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D723CED3221C003D0095A5CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,6 +42,8 @@
 		D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUCollectionContainerView.swift; sourceTree = "<group>"; };
 		D7275015221D34D500174F8D /* IUImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUImageObject.swift; sourceTree = "<group>"; };
 		D7275017221D48A800174F8D /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
+		D7275019221D541800174F8D /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		D727501B221D55E500174F8D /* IUCategoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUCategoryCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD764F62CCCDBD626C8C3C6D /* Pods_Survey_UploadImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A7903867FC292307E0B1F3C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9ABD081FDF987670D9B6D288 /* Pods-Survey-UploadImage.debug.xcconfig */,
+				68ED749BA2B33257001BC30C /* Pods-Survey-UploadImage.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		41D87B2AA1295B5CDBD81DBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66E1DA90EDD7A4574105FDFD /* Pods_Survey_UploadImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D723CEC2221C003D0095A5CE = {
 			isa = PBXGroup;
 			children = (
 				D723CECD221C003D0095A5CE /* Survey-UploadImage */,
 				D723CECC221C003D0095A5CE /* Products */,
+				1A7903867FC292307E0B1F3C /* Pods */,
+				41D87B2AA1295B5CDBD81DBC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,8 +99,8 @@
 				D7275010221D08AB00174F8D /* resource */,
 				D727500F221D088A00174F8D /* Common */,
 				D7275013221D12A600174F8D /* cell */,
+				D727501D221D5E2100174F8D /* views */,
 				D7275003221CF3A700174F8D /* ImageUploadViewController.swift */,
-				D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */,
 				D7275015221D34D500174F8D /* IUImageObject.swift */,
 				D7275017221D48A800174F8D /* CommonFunctions.swift */,
 				D723CED5221C00410095A5CE /* Assets.xcassets */,
@@ -117,6 +145,16 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		D727501D221D5E2100174F8D /* views */ = {
+			isa = PBXGroup;
+			children = (
+				D7275019221D541800174F8D /* SectionHeaderView.swift */,
+				D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */,
+				D727501B221D55E500174F8D /* IUCategoryCollectionView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D723CEDD221C00410095A5CE /* Build configuration list for PBXNativeTarget "Survey-UploadImage" */;
 			buildPhases = (
+				E41EF391F4F0A3633D79A7D8 /* [CP] Check Pods Manifest.lock */,
 				D723CEC7221C003D0095A5CE /* Sources */,
 				D723CEC8221C003D0095A5CE /* Frameworks */,
 				D723CEC9221C003D0095A5CE /* Resources */,
+				E57D42611A34C654AA5F6731 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,14 +225,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E41EF391F4F0A3633D79A7D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Survey-UploadImage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E57D42611A34C654AA5F6731 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Survey-UploadImage/Pods-Survey-UploadImage-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RSSelectionMenu/RSSelectionMenu.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSSelectionMenu.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Survey-UploadImage/Pods-Survey-UploadImage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D723CEC7221C003D0095A5CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D7275016221D34D500174F8D /* IUImageObject.swift in Sources */,
+				D727501C221D55E500174F8D /* IUCategoryCollectionView.swift in Sources */,
 				D723CECF221C003D0095A5CE /* AppDelegate.swift in Sources */,
 				D7275018221D48A800174F8D /* CommonFunctions.swift in Sources */,
+				D727501A221D541800174F8D /* SectionHeaderView.swift in Sources */,
 				D7275009221D05DF00174F8D /* ImageUploadCollectionViewCell.swift in Sources */,
 				D7275012221D0CE900174F8D /* IUCollectionContainerView.swift in Sources */,
 				D7275004221CF3A700174F8D /* ImageUploadViewController.swift in Sources */,
@@ -340,6 +421,7 @@
 		};
 		D723CEDE221C00410095A5CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9ABD081FDF987670D9B6D288 /* Pods-Survey-UploadImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -358,6 +440,7 @@
 		};
 		D723CEDF221C00410095A5CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68ED749BA2B33257001BC30C /* Pods-Survey-UploadImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RSSelectionMenu
 
 let SC_WIDTH = UIScreen.main.bounds.size.width
 let SC_HEIGHT = UIScreen.main.bounds.size.height
@@ -15,14 +16,21 @@ class ImageUploadViewController: UIViewController {
 
     var scrollView: CustomScrollView?
     
-    //tong quan
+    //tong quan header view
     var generalview: SectionHeaderView!
     
-    //phan loai
+    //phan loai header view
     var otherView: SectionHeaderView!
     
+    //collection view for TONG_QUAN
     var collectionContainerView: IUCollectionContainerView!
+    
+    //datasource for TONG_QUAN collection view
     var datasource: Array<IUImageObject>!
+    
+    //Dictionary chua cac tap hinh anh phan loai theo category
+    //Su dung ImageCategory.rawValue lam key
+    var otherDictionary = [String : Array<IUImageObject>]()
     
     var imagePicker: UIImagePickerController!
     var imageCategory: ImageCategory!
@@ -30,17 +38,24 @@ class ImageUploadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        
         datasource = Array<IUImageObject>()
         
-        
+        //1. header view 1
         generalview = SectionHeaderView(title: "Hình tổng quan")
         generalview.shotBtn.addTarget(self, action: #selector(ImageUploadViewController.shotBtnTapped), for: .touchUpInside)
         
+        //2. collection view tong quan
+        collectionContainerView = IUCollectionContainerView(datasource: datasource)
+        
+        //3. header view 2
         otherView = SectionHeaderView(title: "Ưu điểm và nhược điểm")
         otherView.shotBtn.addTarget(self, action: #selector(ImageUploadViewController.otherCategoryBtnTapped), for: .touchUpInside)
         
-        collectionContainerView = IUCollectionContainerView(datasource: datasource)
-        
+        //4. collection view load from Dictionary
         
         
         scrollView = CustomScrollView(views: [generalview, collectionContainerView, otherView])
@@ -50,24 +65,31 @@ class ImageUploadViewController: UIViewController {
     
     @objc func shotBtnTapped() {
         imageCategory = .TONG_QUAN
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
     
     @objc func otherCategoryBtnTapped() {
         
-        //TODO: - show list of category
+        // show list of category
+        let sourceArr = ["TONG_QUAN","COT_DIEN_TRAM_BIEN_AP","HO_GA","LUOI_DIEN_CAO_THE"]
+        let selectionMenu = RSSelectionMenu(dataSource: sourceArr) { (cell, item, indexPath) in
+            cell.textLabel?.text = item
+        }
         
-        
+        selectionMenu.onDismiss = { selectedItems in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.imageCategory = .TONG_QUAN
+                self.present(self.imagePicker, animated: true, completion: nil)
+            })
+        }
+        selectionMenu.show(from: self)
     }
     
 }
 
 extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("imagePickerControllerDidCancel")
+        imagePicker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -82,61 +104,3 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
         }
     }
 }
-
-
-class SectionHeaderView: UIView {
-    let padding: CGFloat = 16
-    var title: String
-    var shotBtn:UIButton!
-    
-    override init(frame: CGRect) {
-        title = ""
-        super.init(frame: frame)
-        layoutView()
-    }
-    
-    init(title: String) {
-        self.title = title
-        super.init(frame: CGRect(x: 0, y: 0, width: SC_WIDTH, height: 50))
-        layoutView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func layoutView() {
-        backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.07)
-        let titleLabel = UILabel(frame: CGRect(x: padding, y: 0, width: self.frame.size.width * 0.75, height: 18))
-        titleLabel.center.y = self.center.y
-        titleLabel.text = title
-        titleLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 15)
-        titleLabel.textColor = UIColor(red: 95.0/255, green: 95.0/255, blue: 95.0/255, alpha: 1.0)
-        
-        let btnWidth: CGFloat = 80
-        shotBtn = UIButton(frame: CGRect(x:0, y: 0, width: btnWidth, height: 28))
-        shotBtn.layer.cornerRadius = 6
-        shotBtn.layer.masksToBounds = true
-        shotBtn.setTitle("Chụp ảnh", for: .normal)
-        shotBtn.setTitleColor(UIColor(red: 241.0/255, green: 116.0/255, blue: 35.0/255, alpha: 1.0), for: .normal)
-        shotBtn.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 10)
-        shotBtn.backgroundColor = UIColor(red: 241.0/255, green: 116.0/255, blue: 35.0/255, alpha: 0.2)
-        self.shotBtn?.frame.origin.x = self.frame.size.width - (padding + self.shotBtn!.frame.size.width)
-        self.shotBtn?.center.y = self.center.y
-        
-        self.addSubview(titleLabel)
-        self.addSubview(shotBtn)
-    }
-}
-
-//    func saveImage(imageName: String){
-//        //create an instance of the FileManager
-//        let fileManager = FileManager.default
-//        //get the image path
-//        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
-//        //get the image we took with camera
-//        let image = imageView.image!
-//        //get the PNG data for this image
-//        let data = UIImagePNGRepresentation(image)
-//        //store it in the document directory    fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
-//    }

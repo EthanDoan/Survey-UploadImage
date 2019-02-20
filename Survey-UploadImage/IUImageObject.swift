@@ -9,11 +9,14 @@
 import Foundation
 import UIKit
 
-enum ImageCategory: String {
+enum ImageCategory: String, CaseIterable {
     case TONG_QUAN = "TONG_QUAN"
     case COT_DIEN_TRAM_BIEN_AP = "COT_DIEN_TRAM_BIEN_AP"
     case HO_GA = "HO_GA"
     case LUOI_DIEN_CAO_THE = "LUOI_DIEN_CAO_THE"
+    
+    static let allValues = [TONG_QUAN, COT_DIEN_TRAM_BIEN_AP, HO_GA, LUOI_DIEN_CAO_THE]
+    
 }
 
 class IUImageObject {
