@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		D723CECF221C003D0095A5CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D723CECE221C003D0095A5CE /* AppDelegate.swift */; };
-		D723CED1221C003D0095A5CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D723CED0221C003D0095A5CE /* ViewController.swift */; };
 		D723CED4221C003D0095A5CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D723CED2221C003D0095A5CE /* Main.storyboard */; };
 		D723CED6221C00410095A5CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D723CED5221C00410095A5CE /* Assets.xcassets */; };
 		D723CED9221C00410095A5CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D723CED7221C00410095A5CE /* LaunchScreen.storyboard */; };
+		D7275004221CF3A700174F8D /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7275003221CF3A700174F8D /* ImageUploadViewController.swift */; };
+		D7275009221D05DF00174F8D /* ImageUploadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7275007221D05DF00174F8D /* ImageUploadCollectionViewCell.swift */; };
+		D727500A221D05DF00174F8D /* ImageUploadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7275008221D05DF00174F8D /* ImageUploadCollectionViewCell.xib */; };
+		D727500C221D068400174F8D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D727500B221D068400174F8D /* sample.jpg */; };
+		D727500E221D087C00174F8D /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727500D221D087C00174F8D /* CustomScrollView.swift */; };
+		D7275012221D0CE900174F8D /* IUCollectionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D723CECB221C003D0095A5CE /* Survey-UploadImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Survey-UploadImage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D723CECE221C003D0095A5CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D723CED0221C003D0095A5CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D723CED3221C003D0095A5CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D723CED5221C00410095A5CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D723CED8221C00410095A5CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D723CEDA221C00410095A5CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7275003221CF3A700174F8D /* ImageUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
+		D7275007221D05DF00174F8D /* ImageUploadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCollectionViewCell.swift; sourceTree = "<group>"; };
+		D7275008221D05DF00174F8D /* ImageUploadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageUploadCollectionViewCell.xib; sourceTree = "<group>"; };
+		D727500B221D068400174F8D /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		D727500D221D087C00174F8D /* CustomScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
+		D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUCollectionContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,51 @@
 		D723CECD221C003D0095A5CE /* Survey-UploadImage */ = {
 			isa = PBXGroup;
 			children = (
-				D723CECE221C003D0095A5CE /* AppDelegate.swift */,
-				D723CED0221C003D0095A5CE /* ViewController.swift */,
-				D723CED2221C003D0095A5CE /* Main.storyboard */,
+				D7275010221D08AB00174F8D /* resource */,
+				D727500F221D088A00174F8D /* Common */,
+				D7275013221D12A600174F8D /* cell */,
+				D7275003221CF3A700174F8D /* ImageUploadViewController.swift */,
+				D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */,
 				D723CED5221C00410095A5CE /* Assets.xcassets */,
-				D723CED7221C00410095A5CE /* LaunchScreen.storyboard */,
 				D723CEDA221C00410095A5CE /* Info.plist */,
+				D7275014221D12F400174F8D /* SupportingFiles */,
 			);
 			path = "Survey-UploadImage";
+			sourceTree = "<group>";
+		};
+		D727500F221D088A00174F8D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D727500D221D087C00174F8D /* CustomScrollView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D7275010221D08AB00174F8D /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				D727500B221D068400174F8D /* sample.jpg */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		D7275013221D12A600174F8D /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				D7275007221D05DF00174F8D /* ImageUploadCollectionViewCell.swift */,
+				D7275008221D05DF00174F8D /* ImageUploadCollectionViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		D7275014221D12F400174F8D /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D723CECE221C003D0095A5CE /* AppDelegate.swift */,
+				D723CED2221C003D0095A5CE /* Main.storyboard */,
+				D723CED7221C00410095A5CE /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +172,8 @@
 				D723CED9221C00410095A5CE /* LaunchScreen.storyboard in Resources */,
 				D723CED6221C00410095A5CE /* Assets.xcassets in Resources */,
 				D723CED4221C003D0095A5CE /* Main.storyboard in Resources */,
+				D727500A221D05DF00174F8D /* ImageUploadCollectionViewCell.xib in Resources */,
+				D727500C221D068400174F8D /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,8 +184,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D723CED1221C003D0095A5CE /* ViewController.swift in Sources */,
 				D723CECF221C003D0095A5CE /* AppDelegate.swift in Sources */,
+				D7275009221D05DF00174F8D /* ImageUploadCollectionViewCell.swift in Sources */,
+				D7275012221D0CE900174F8D /* IUCollectionContainerView.swift in Sources */,
+				D7275004221CF3A700174F8D /* ImageUploadViewController.swift in Sources */,
+				D727500E221D087C00174F8D /* CustomScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
