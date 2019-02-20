@@ -18,14 +18,14 @@ fileprivate let itemH: CGFloat = 120 - marginTop * 2
 
 class IUCollectionContainerView: UIView {
 
-    var datasource: Array<Any>!
+    var datasource: Array<IUImageObject>!
     var collectionView: UICollectionView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    init(datasource: Array<Any>) {
+    init(datasource: Array<IUImageObject>) {
         self.datasource = datasource
         super.init(frame: CGRect(x: 0, y: 0, width: SC_WIDTH, height: 120))
         initializeCollectionView()
@@ -52,6 +52,11 @@ class IUCollectionContainerView: UIView {
         collectionView.dataSource = self
     }
     
+    func reloadData(datasource: Array<IUImageObject>) {
+        self.datasource = datasource
+        collectionView.reloadData()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -68,8 +73,9 @@ extension IUCollectionContainerView: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageUploadCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageUploadCollectionViewCell", for: indexPath) as! ImageUploadCollectionViewCell
-        cell.cellImageView.image = UIImage(named: "sample.jpg")
-        cell.cellImageView.contentMode = .scaleAspectFill
+        
+        let imgObject = datasource[indexPath.item]
+        cell.cellImageView.image = imgObject.originImage
         return cell
     }
     

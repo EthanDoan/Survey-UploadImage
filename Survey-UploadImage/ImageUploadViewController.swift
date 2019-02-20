@@ -16,21 +16,23 @@ class ImageUploadViewController: UIViewController {
     var scrollView: CustomScrollView?
     
     var shview: SectionHeaderView!
-    var collectionView: IUCollectionContainerView!
-    var datasource: Array<Any>!
+    var collectionContainerView: IUCollectionContainerView!
+    var datasource: Array<IUImageObject>!
     
     var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        datasource = Array<IUImageObject>()
+        
+        
         shview = SectionHeaderView(title: "Header title string")
         shview.shotBtn.addTarget(self, action: #selector(ImageUploadViewController.shotBtnTapped), for: .touchUpInside)
         
-        datasource = ["1","2","3","4","5"]
-        collectionView = IUCollectionContainerView(datasource: datasource)
+        collectionContainerView = IUCollectionContainerView(datasource: datasource)
         
-        scrollView = CustomScrollView(views: [shview, collectionView])
+        scrollView = CustomScrollView(views: [shview, collectionContainerView])
         self.view.addSubview(scrollView!)
         
     }
@@ -41,7 +43,41 @@ class ImageUploadViewController: UIViewController {
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
-
+    
+    func saveImage(image: UIImage, fileName: String) -> URL? {
+        
+        let fileManager = FileManager.default
+        
+        // get the documents directory url
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        let timestampStr = "\(NSDate().timeIntervalSince1970 * 1000)"
+        let fileName = "\(fileName)-\(timestampStr)"
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        // get your UIImage jpeg data representation and check if the destination file url already exists
+        
+        if (fileManager.fileExists(atPath: fileURL.path)) {
+            do {
+                // writes the image data to disk
+                try fileManager.removeItem(atPath: fileURL.path)
+            } catch {
+                print("error delete file:", error)
+            }
+        }
+        
+        if let data = image.jpegData(compressionQuality: 1.0) {
+            do {
+                // writes the image data to disk
+                try data.write(to: fileURL)
+                print("file saved")
+                return fileURL
+            } catch {
+                print("error saving file:", error)
+                return nil
+            }
+        }
+        return nil
+    }
 }
 
 extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -50,15 +86,18 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
         imagePicker.dismiss(animated: true, completion: nil)
-        guard let selectedImage = info[.originalImage] as? UIImage else {
-            print("Image not found!")
-            return
-        }
-        let imageTaken: UIImage = selectedImage
 
+        if let selectedImage = info[.originalImage] as? UIImage {
+
+            let imgUrl: URL = self.saveImage(image: selectedImage, fileName: "imageUpload.jpg")!
+            
+            let imageObject = IUImageObject(category: .TONG_QUAN, imageUrl: imgUrl.absoluteString, originImage: selectedImage)
+            datasource.append(imageObject)
+            collectionContainerView.reloadData(datasource: datasource)
+        }
     }
+    
 }
 
 
@@ -106,3 +145,15 @@ class SectionHeaderView: UIView {
         self.addSubview(shotBtn)
     }
 }
+
+//    func saveImage(imageName: String){
+//        //create an instance of the FileManager
+//        let fileManager = FileManager.default
+//        //get the image path
+//        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+//        //get the image we took with camera
+//        let image = imageView.image!
+//        //get the PNG data for this image
+//        let data = UIImagePNGRepresentation(image)
+//        //store it in the document directory    fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
+//    }

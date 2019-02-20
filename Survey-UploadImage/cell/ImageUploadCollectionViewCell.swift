@@ -12,8 +12,14 @@ class ImageUploadCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var cellImageView: UIImageView!
     
+    var imageObject: IUImageObject!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func loadCell(imageObject: IUImageObject) {
+        self.cellImageView.image = imageObject.originImage
     }
 
 }

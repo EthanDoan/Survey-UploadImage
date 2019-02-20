@@ -17,6 +17,7 @@
 		D727500C221D068400174F8D /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D727500B221D068400174F8D /* sample.jpg */; };
 		D727500E221D087C00174F8D /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727500D221D087C00174F8D /* CustomScrollView.swift */; };
 		D7275012221D0CE900174F8D /* IUCollectionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */; };
+		D7275016221D34D500174F8D /* IUImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7275015221D34D500174F8D /* IUImageObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D727500B221D068400174F8D /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		D727500D221D087C00174F8D /* CustomScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUCollectionContainerView.swift; sourceTree = "<group>"; };
+		D7275015221D34D500174F8D /* IUImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUImageObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				D7275013221D12A600174F8D /* cell */,
 				D7275003221CF3A700174F8D /* ImageUploadViewController.swift */,
 				D7275011221D0CE900174F8D /* IUCollectionContainerView.swift */,
+				D7275015221D34D500174F8D /* IUImageObject.swift */,
 				D723CED5221C00410095A5CE /* Assets.xcassets */,
 				D723CEDA221C00410095A5CE /* Info.plist */,
 				D7275014221D12F400174F8D /* SupportingFiles */,
@@ -184,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7275016221D34D500174F8D /* IUImageObject.swift in Sources */,
 				D723CECF221C003D0095A5CE /* AppDelegate.swift in Sources */,
 				D7275009221D05DF00174F8D /* ImageUploadCollectionViewCell.swift in Sources */,
 				D7275012221D0CE900174F8D /* IUCollectionContainerView.swift in Sources */,
