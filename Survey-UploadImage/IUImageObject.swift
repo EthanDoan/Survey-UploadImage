@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-enum ImageCategory {
-    case TONG_QUAN
-    case COT_DIEN_TRAM_BIEN_AP
-    case HO_GA
-    case LUOI_DIEN_CAO_THE
+enum ImageCategory: String {
+    case TONG_QUAN = "TONG_QUAN"
+    case COT_DIEN_TRAM_BIEN_AP = "COT_DIEN_TRAM_BIEN_AP"
+    case HO_GA = "HO_GA"
+    case LUOI_DIEN_CAO_THE = "LUOI_DIEN_CAO_THE"
 }
 
 class IUImageObject {

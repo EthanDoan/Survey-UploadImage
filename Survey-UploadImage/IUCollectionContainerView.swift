@@ -44,7 +44,7 @@ class IUCollectionContainerView: UIView {
     
     func layoutView() {
         
-        self.backgroundColor = UIColor.lightGray
+//        self.backgroundColor = UIColor.lightGray
         
         self.addSubview(collectionView)
         collectionView.center.y = self.center.y

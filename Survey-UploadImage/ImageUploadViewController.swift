@@ -15,11 +15,17 @@ class ImageUploadViewController: UIViewController {
 
     var scrollView: CustomScrollView?
     
-    var shview: SectionHeaderView!
+    //tong quan
+    var generalview: SectionHeaderView!
+    
+    //phan loai
+    var otherView: SectionHeaderView!
+    
     var collectionContainerView: IUCollectionContainerView!
     var datasource: Array<IUImageObject>!
     
     var imagePicker: UIImagePickerController!
+    var imageCategory: ImageCategory!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,57 +33,36 @@ class ImageUploadViewController: UIViewController {
         datasource = Array<IUImageObject>()
         
         
-        shview = SectionHeaderView(title: "Header title string")
-        shview.shotBtn.addTarget(self, action: #selector(ImageUploadViewController.shotBtnTapped), for: .touchUpInside)
+        generalview = SectionHeaderView(title: "Hình tổng quan")
+        generalview.shotBtn.addTarget(self, action: #selector(ImageUploadViewController.shotBtnTapped), for: .touchUpInside)
+        
+        otherView = SectionHeaderView(title: "Ưu điểm và nhược điểm")
+        otherView.shotBtn.addTarget(self, action: #selector(ImageUploadViewController.otherCategoryBtnTapped), for: .touchUpInside)
         
         collectionContainerView = IUCollectionContainerView(datasource: datasource)
         
-        scrollView = CustomScrollView(views: [shview, collectionContainerView])
+        
+        
+        scrollView = CustomScrollView(views: [generalview, collectionContainerView, otherView])
         self.view.addSubview(scrollView!)
         
     }
     
     @objc func shotBtnTapped() {
+        imageCategory = .TONG_QUAN
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func saveImage(image: UIImage, fileName: String) -> URL? {
+    @objc func otherCategoryBtnTapped() {
         
-        let fileManager = FileManager.default
+        //TODO: - show list of category
         
-        // get the documents directory url
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
-        let timestampStr = "\(NSDate().timeIntervalSince1970 * 1000)"
-        let fileName = "\(fileName)-\(timestampStr)"
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        // get your UIImage jpeg data representation and check if the destination file url already exists
-        
-        if (fileManager.fileExists(atPath: fileURL.path)) {
-            do {
-                // writes the image data to disk
-                try fileManager.removeItem(atPath: fileURL.path)
-            } catch {
-                print("error delete file:", error)
-            }
-        }
-        
-        if let data = image.jpegData(compressionQuality: 1.0) {
-            do {
-                // writes the image data to disk
-                try data.write(to: fileURL)
-                print("file saved")
-                return fileURL
-            } catch {
-                print("error saving file:", error)
-                return nil
-            }
-        }
-        return nil
     }
+    
 }
 
 extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -89,15 +74,13 @@ extension ImageUploadViewController: UIImagePickerControllerDelegate, UINavigati
         imagePicker.dismiss(animated: true, completion: nil)
 
         if let selectedImage = info[.originalImage] as? UIImage {
-
-            let imgUrl: URL = self.saveImage(image: selectedImage, fileName: "imageUpload.jpg")!
-            
-            let imageObject = IUImageObject(category: .TONG_QUAN, imageUrl: imgUrl.absoluteString, originImage: selectedImage)
-            datasource.append(imageObject)
-            collectionContainerView.reloadData(datasource: datasource)
+            CommonFunctions.saveImage(image: selectedImage, fileName: "imageUpload.jpg") { (success, imageURL) in
+                let imageObject = IUImageObject(category: self.imageCategory, imageUrl: imageURL!.absoluteString, originImage: selectedImage)
+                self.datasource.append(imageObject)
+                self.collectionContainerView.reloadData(datasource: self.datasource)
+            }
         }
     }
-    
 }
 
 
